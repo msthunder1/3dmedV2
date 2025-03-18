@@ -1,0 +1,40 @@
+.flashMessage{
+	width: 100%;
+	padding: $spacing16;
+	box-sizing: border-box;
+	border: 1px solid $green;
+	color: $green;
+	margin-bottom: $spacing16;
+	font-weight: bold;
+
+	&.error{
+		border: 1px solid $red;
+		color: $red;
+	}
+
+	&__single{
+		padding-bottom: $spacing8;
+
+		&:last-child{
+			padding-bottom: 0;
+		}
+	}
+
+	&.thankyou{
+		width: 500px;
+		padding: 100px $spacing16;
+		box-sizing: border-box;
+		border: 1px solid $color1;
+		color: $grey-dark;
+		margin: 0;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: $spacing40;
+		position: relative;
+
+		@media(max-width: $screenM-max){
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+.fakture{
+
+	&__stranka{
+		display: flex;
+		margin-bottom: $spacing16;
+
+		@media(max-width: $screenM-max){
+			flex-direction: column;
+			align-items: baseline;
+		}
+	}
+
+	&__strankaTitle{
+		font-size: 1.2rem;
+		color: #646464;
+		font-weight: bold;
+		padding-right: $spacing16;
+	}
+
+	&__strankaInput{
+		width: 300px;
+		padding: $spacing8;
+
+		@media(max-width: $screenM-max){
+			width: 100%;
+			box-sizing: border-box;
+			margin: 10px 0;
+	 	}
+	}
+}

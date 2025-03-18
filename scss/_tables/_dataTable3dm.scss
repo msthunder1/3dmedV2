@@ -1,0 +1,133 @@
+.dataTable3dm {
+	color: $black;
+
+	table.dataTable3dm__table{
+		border-collapse:separate;
+		border-spacing: 0 10px;
+		width: 100%;
+
+		.dataTable3dm__head{
+			background: $color1;
+		}
+
+		.dataTable3dm__header{
+			color: $white;
+			text-transform: uppercase;
+			border: 0 none;
+			padding: 10px 0;
+
+			&--hidden {
+				display: none;
+			}
+		}
+
+		.dataTable3dm__body{
+			.dataTable3dm__row{
+				background: $grey-extgraLight;
+				vertical-align: top;
+			}
+
+			.dataTable3dm__cell{
+				padding: 5px $spacing8;
+				text-align: center;
+
+				&--hidden {
+					display: none;
+				}
+
+				&.delete{
+					width: 30px;
+				}
+			}
+		}
+
+		.dataTable3dm__cellElements{
+			display: flex;
+			flex-direction: column;
+
+			i{
+				margin-right: $spacing8;
+			}
+		}
+
+		.dataTable3dm__cellElement{
+			margin-bottom: $spacing8;
+		}
+
+	}
+
+	a {
+		color: $black;
+	}
+
+	.fileList{
+		display: flex;
+		flex-direction: column;
+
+		&__file{
+			margin-bottom: $spacing8;
+		}
+
+		&__link{
+			display: flex;
+			align-items: center;
+		}
+
+		&__icon{
+			margin-right: $spacing8;
+		}
+
+		&__nofile{
+			color: $grey-middle;
+		}
+	}
+
+	.statusMark{
+		display: flex;
+		align-items: center;
+
+		&__icon{
+			width:12px;
+			height: 12px;
+			border-radius: 50%;
+			margin: 0 $spacing16 0 $spacing8;
+		}
+	}
+
+	&__statusPlacila {
+		position: relative;
+
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 120%;
+			height: 14px;
+			width: 14px;
+			transform: translateY(-50%);
+			border-radius: 50%;
+		}
+
+		&.vplacilu {
+			color: $grey;
+		}
+
+		&.placano {
+			color: $green;
+
+			&:after {
+				background: $green;
+			}
+		}
+
+		&.neplacano {
+			color: $red;
+			font-weight: bold;
+
+			&:after {
+				background: $red;
+			}
+		}
+	}
+}

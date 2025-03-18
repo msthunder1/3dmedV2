@@ -1,0 +1,1 @@
+<?php get_header(); ?><div class="default__wrapper">	<div class="default__container"><?php		if ( have_posts() ){			while ( have_posts() ){				the_post();				$content = get_the_content();				$content = apply_filters('the_content', $content);				echo wp_filter_nohtml_kses($content);			}		}	?></div></div><?php get_footer(); ?>

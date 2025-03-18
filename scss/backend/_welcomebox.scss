@@ -1,0 +1,51 @@
+.welcomebox{
+	display: flex;
+	justify-content: space-between;
+
+	&__item{
+		width: 30%;
+	}
+
+	&__link{
+		padding: $spacing40 $spacing16;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		background: $grey-light;
+
+		.orange &{
+			background: $color1;
+		}
+
+		.lightorange &{
+			background: $color3;
+		}
+	}
+
+	&__label{
+		color: $black;
+
+		.orange &{
+			color: $white;
+		}
+
+		.lightorange &{
+			color: $color5;
+		}
+	}
+
+	&__title{
+		color: $black;
+		font-size: 1.4rem;
+		line-height: 1.4rem;
+		font-weight: bold;
+
+		.orange &{
+			color: $white;
+		}
+
+		.lightorange &{
+			color: $color5;
+		}
+	}
+}

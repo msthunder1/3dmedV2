@@ -1,0 +1,12 @@
+.faktureResponseData{
+	&__stElementovWrapper,
+	&__popustWrapper{
+		display: flex;
+		margin: $spacing8 0 $spacing16;
+	}
+
+	&__stElementovLabel,
+	&__popustLabel{
+		margin-right: $spacing8;
+	}
+}

@@ -1,0 +1,20 @@
+.pregledNarocil{
+
+	&__kupec{
+		display: flex;
+		margin-bottom: $spacing16;
+		align-items: center;
+	}
+
+	&__kupecTitle{
+		font-size: 1.2rem;
+		color: #646464;
+		font-weight: bold;
+		padding-right: $spacing16;
+	}
+
+	&__kupecInput{
+		width: 300px;
+		padding: $spacing8;
+	}
+}

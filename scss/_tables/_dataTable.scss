@@ -1,0 +1,26 @@
+.dataTable{
+
+	&__header{
+		background: $grey-dark;
+		color: $white;
+	}
+
+	&__table{
+		width: 100%;
+	}
+
+	&__row{
+		border-bottom: 1px solid $white;
+		padding: $spacing8 0;
+		
+		&:nth-child(2n){
+			background: $grey-extgraLight;
+			color: $black;
+		}
+	}
+
+	a {
+		color: $black;
+	}
+
+}

@@ -1,0 +1,83 @@
+$labelWidth: 250px;
+
+#loginform {
+	text-align: left;
+	display: flex;
+	flex-wrap: wrap;
+
+	p {
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		position: relative;
+		margin: 10px 0;
+
+		@media(max-width: $screenM-max){
+			flex-direction: column;
+		}
+
+		&.required::before{
+			content: "*";
+			position: absolute;
+			color: red;
+			left: 5px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&.login-remember {
+			width: 100%;
+
+			label {
+				width: 100%;
+				text-align: center;
+			}
+		}
+
+		&.login-submit{
+			width: 100%;
+			input {
+				display: block;
+				background: $color1;
+				box-shadow: none;
+				width: 100%;
+				font-size: 1.2rem;
+				border-radius: 5px;
+			}
+		}
+
+		&.submitButton {
+			width: calc(60% - #{$spacing16});
+			input {
+				margin: $spacing8 0 0;
+			}
+		}
+	}
+
+	label {
+		display: block;
+		width: $labelWidth;
+		padding: $spacing8 $spacing16;
+		margin: 0;
+		box-sizing: border-box;
+		cursor: pointer;
+		text-align: right;
+
+		@media(max-width: $screenM-max){
+			width: 100%;
+			text-align: left;
+			padding: $spacing8 0;
+		}
+	}
+
+	input[type="text"],
+	input[type="password"] {
+		display: block;
+		border: 0;
+		border-bottom: 1px solid $grey-dark;
+		background: transparent;
+		color: $color1;
+		flex-grow: 1;
+	}
+}

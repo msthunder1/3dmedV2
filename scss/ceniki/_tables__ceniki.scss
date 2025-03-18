@@ -1,0 +1,21 @@
+.cenikAbc{
+	&__cenik{
+		display: flex;
+		justify-content: center;
+	}
+
+	&__cenikValue{
+		margin-left: $spacing16;
+	}
+}
+
+.spisekCen{
+	&__row{
+		display: flex;
+		justify-content: center;
+	}
+
+	&__value{
+		margin-left: $spacing16;
+	}
+}

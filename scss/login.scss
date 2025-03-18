@@ -1,0 +1,70 @@
+@import 'general/colors';
+@import 'general/general';
+
+.login{
+	background: url('/wp-content/uploads/2020/01/coverphoto_homepagemed.jpg');
+	background-size: cover;
+
+	#login{
+		position: relative;
+		z-index: 1;
+		background: $white;
+		padding: 40px;
+		box-shadow: 0 70px 70px -25px #171717;
+		top: 100px;
+		width: 500px!important;
+		border-top: 10px solid $color1;
+	}
+
+	@media (max-width: 767px){
+		width: 90% !important;
+		box-sizing: border-box;
+		top: 50px;
+	}
+
+	h1{
+		display: none;
+	}
+
+	form{
+		background: transparent;
+		border: 0 none;
+		box-shadow: none;
+		padding: 0;
+	}
+
+	.message{
+	    border-left: 4px solid $color1;
+	}
+	
+	.message a{
+				display:none;
+	}
+
+	input[type=text]:focus{
+		border-color: $color1;
+		box-shadow: 0 0 0 1px $color1;
+	}
+
+	.submit .button{
+		display: block;
+		width: 100%;
+		padding: 8px 40px;
+		border: 0;
+		color:#fff;
+		background: $color1;
+		text-transform: uppercase;
+		cursor: pointer;
+		border-radius: 5px;
+		font-size: 1.2rem;
+		line-height: 1.2em;
+	}
+
+	#nav{
+		display: none;
+	}
+
+	#backtoblog{
+		padding: 0;
+	}
+}

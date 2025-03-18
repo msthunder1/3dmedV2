@@ -1,0 +1,48 @@
+.fakture{
+	&__stranka{
+		display: flex;
+		align-items: center;
+	}
+
+	&__strankaTitle{
+		font-size: 1.2rem;
+		color: $grey-dark;
+		font-weight: bold;
+		padding-right: $spacing16;
+	}
+
+	&__strankaInput{
+		width: 300px;
+		padding: $spacing8;
+	}
+
+	&__response{
+		margin-top: $spacing16;
+
+		.faktureList{
+			&__form{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+
+			&__buttonWrapper{
+				margin-left: $spacing6;
+			}
+
+			&__submit{
+				padding: 10px;
+
+				&.placano {
+					background: $green;
+					box-shadow: none;
+				}
+
+				&.neplacano{
+					background: $red;
+					box-shadow: none;
+				}
+			}
+		}
+	}
+}

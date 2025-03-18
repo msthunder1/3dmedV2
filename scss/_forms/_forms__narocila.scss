@@ -1,0 +1,165 @@
+.narocilaEdit{
+	&__partCustomer{
+		display: flex;
+	}
+
+	&__partLeft{
+		width: 50%;
+	}
+
+	&__partRight{
+		width: 50%;
+		text-align: center;
+	}
+
+	&__repeater{
+		margin: $spacing12 0 0;
+
+		.form__column{
+			padding: 0;
+		}
+	}
+
+	&__repeaterTop{
+		margin-bottom: $spacing6;
+
+		.form__label{
+			min-width: auto;
+		}
+
+		.form__value{
+			display: flex;
+			height: 100%;
+			align-items: center;
+			margin: 1px;
+			flex-grow: 1;
+		}
+
+		.form__input,
+		.form__select,
+		.form__textarea,{
+			min-width: auto;
+		}
+	}
+
+	&__repeaterBottom{
+		background: transparent;
+		padding: 0;
+	}
+
+	&__repeaterBottomLeft{
+		width: 50%;
+		margin-right: $spacing12;
+	}
+
+	&__repeaterBottomRight{
+		width: 50%;
+		margin-left: $spacing12;
+	}
+
+	&__ceniki{
+		flex-wrap: wrap;
+	}
+
+	&__cenikiLabel{
+		font-weight: 700;
+		margin-bottom: $spacing6;
+		color: $black;
+	}
+
+	&__cenikiValue{
+		display: flex;
+	}
+
+	&__cenikiBox{
+		display: flex;
+		align-items: center;
+
+		&.multiplier{
+			align-items: center;
+			padding: $spacing6 1px;
+			font-weight: 700;
+		}
+
+		&.cena{
+			align-items: center;
+			padding: $spacing6 0;
+			font-weight: 700;
+			color: $color1;
+		}
+
+		.form__input{
+			width: 90px;
+			min-width: auto;
+		}
+	}
+
+	&__ceniki2{
+		.form__label{
+			min-width: auto;
+		}
+	}
+
+	&__natisni,
+	&__prenesi{
+		display: inline-flex;
+		margin: 40px auto 0;
+		flex-direction: column;
+		cursor: pointer;
+	}
+
+	&__izpisek{
+		display: inline-flex;
+		margin: 40px auto 0;
+		flex-direction: column;
+
+		.seznam{
+			&__cenik{
+				background: $color4;
+
+				&.secondary{
+					background: $grey-light;
+				}
+			}
+
+			&__title{
+				padding: $spacing6;
+				border-top: 2px solid $white;
+				border-bottom: 1px solid $white;
+				font-weight: bold;
+			}
+
+			&__row{
+				display: flex;
+			}
+
+			&__column{
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				flex-basis: 0;
+				border-right: 1px solid $white;
+
+				&:last-child{
+					border-right: 0 none;
+				}
+			}
+		}
+	}
+
+	&__izpisekTitle{
+		background: $color4;
+		padding: $spacing6;
+		font-size: 1.4rem;
+		font-weight: bold;
+		color: $black;
+	}
+
+	.form__icon{
+		font-size: 5rem;
+	}
+
+	.js-image-download{
+		padding: $spacing6;
+	}
+}

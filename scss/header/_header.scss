@@ -1,0 +1,71 @@
+.header{
+	background: $color1;
+
+	&__wrapper{
+		display: flex;
+		align-items: center;
+		width: 75%;
+		margin: auto;
+		box-sizing: border-box;
+
+		@media(max-width:$screenXXL-min){
+			width: 100%;
+		}
+
+		@media(max-width:$screenL-max){
+			padding: $spacing24;
+		}
+
+		@media(max-width:$screenM-max){
+			padding: $spacing16;
+		}
+
+		&.center{
+			justify-content: center;
+		}
+	}
+
+	&__logo{
+		display: block;
+		box-sizing: border-box;
+		padding: $spacing24 0 $spacing24 $spacing16;
+
+		@media(max-width:$screenL-max){
+			padding: 0;
+		}
+	}
+
+	&__link{
+		display: flex;
+		align-items: center;
+	}
+
+	&__image{
+		display: block;
+		max-width: 130px;
+		margin-right: $spacing8;
+	}
+
+	&__label{
+		text-transform: uppercase;
+		color: $white;
+		font-size: 1.7rem;
+
+		@media(max-width:$screenS-max){
+			display: none;
+		}
+	}
+
+	&__menu{
+		margin-left: auto;
+		position: relative;
+		padding: 0 $spacing16 0 0;
+		align-self: stretch;
+	    display: flex;
+		align-items: center;
+
+		@media(max-width:$screenL-max){
+			padding: 0;
+		}
+	}
+}

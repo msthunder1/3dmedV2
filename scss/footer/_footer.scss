@@ -1,0 +1,93 @@
+.footer{
+
+	margin-top: $spacing24;
+
+	h2,
+	h3{
+		color:#ffffff;
+	}
+
+	p{
+		font-size:1rem;
+		line-height:1.4em;
+	}
+
+	img{
+		max-width: 100%;
+		height: auto;
+		display: inline-block;
+	}
+
+	a{
+		color: $grey-dark;
+		text-decoration: underline;
+
+		&.footer-link {
+			color: $color1;
+			font-size:1.5rem;
+			text-decoration: none;
+
+			@media(max-width: $screenM-max){
+				font-size:1.2rem;
+			}
+		}
+	}
+
+	&__top{
+		background: $grey-extraDark;
+		padding: $spacing40;
+		justify-content: center;
+
+		@media(max-width: $screenM-max){
+			padding: $spacing24;
+		}
+	}
+
+	&__boxes{
+		display: flex;
+
+		@media(max-width: $screenM-max){
+			flex-direction: column;
+		}
+	}
+
+	&__widget{
+		width:33.33%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 $spacing16;
+		box-sizing: border-box;
+
+		@media(max-width: $screenM-max){
+			width: 100%;
+			padding: 0;
+			justify-content: flex-start;
+
+			h2,
+			h3{
+				margin: $spacing24 0 0;
+			}
+		}
+
+		&:first-child{
+			padding-left: 0;
+		}
+		
+		&:last-child{
+			padding-right: 0;
+		}
+	}
+
+	&__bottom{
+		background: $black;
+		padding: $spacing40 0;
+		display: flex;
+		justify-content: center;
+		color: $grey-dark;
+
+		@media(max-width: $screenM-max){
+			padding: $spacing24;
+		}
+	}
+}

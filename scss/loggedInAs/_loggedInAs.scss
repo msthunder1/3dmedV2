@@ -1,0 +1,32 @@
+.loggedInAs{
+	display: flex;
+	background: $white;
+	padding: $spacing32 0 0;
+	color: $grey-dark;
+	width: 75%;
+	margin: auto;
+	box-sizing: border-box;
+
+	@media(max-width:$screenXXL-min){
+		padding: $spacing32 $spacing24 0;
+		width: 100%;
+	}
+
+	@media(max-width:$screenM-max){
+		padding: $spacing24 $spacing16 0;
+	}
+
+	&__label{
+		margin-left: $spacing8;
+
+		@media(max-width:$screenS-max){
+			display: none;
+		}
+	}
+
+	&__data{
+		font-weight: bold;
+		margin-left: $spacing8;
+		text-transform: uppercase;
+	}
+}
