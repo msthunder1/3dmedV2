@@ -1,0 +1,164 @@
+/*
+ ** Preset veriables, colros and typos **
+ */
+html, body {
+  font-size: 16px;
+  line-height: 1.2em;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #319587;
+}
+/*
+ ** General wrapper styles **
+ */
+.main__wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+/*
+ ** Modules **
+ */
+form {
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+}
+form p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+form p.login-remember {
+  width: 40%;
+}
+form p.login-remember label {
+  width: 100%;
+}
+form p.login-submit {
+  width: calc(60% - 16px);
+}
+form p.login-submit input {
+  margin: 8px 0 8px 16px;
+}
+form label {
+  display: block;
+  width: 40%;
+  padding: 16px;
+  margin: 8px 0;
+  background: #efefef;
+  box-sizing: border-box;
+  color: #7f7f7f;
+  border-radius: 8px;
+  cursor: pointer;
+}
+form input[type="text"], form input[type="password"] {
+  display: block;
+  width: calc(60% - 16px);
+  padding: 16px;
+  margin: 8px 0 8px 16px;
+  border: 0;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 1px #afafaf;
+  border-radius: 8px;
+  color: #7f7f7f;
+}
+.button {
+  padding: 16px 40px;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: inset 0 0 0 1px #7f7f7f;
+  color: #fff;
+  background: #95318f;
+  text-transform: uppercase;
+}
+.loginWindow {
+  width: 50%;
+  margin: auto;
+  height: 70vh;
+}
+.loginWindow__loginForm {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginWindow__wrapper {
+  display: flex;
+  padding: 40px;
+  height: 100%;
+}
+.loginWindow__box {
+  height: 100%;
+  margin: 0 8px;
+  transition: all 400ms ease;
+  background: #95318f;
+}
+.loginWindow__box.box__single {
+  width: 100%;
+}
+.loginWindow__box.box__double {
+  width: 50%;
+}
+.loginWindow__box.box__double:hover {
+  width: 60%;
+  background: #319587;
+}
+.loginWindow__box.box__tripple {
+  width: 33.33%;
+}
+.loginWindow__box.box__tripple:hover {
+  width: 40%;
+  background: #319587;
+}
+.loginWindow__box:hover {
+  background: #319587;
+}
+.loginWindow__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.loginWindow__title {
+  font-size: 2rem;
+  color: #fff;
+}
+.backend {
+  min-height: 100vh;
+}
+.backend__wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+.backend__leftBox {
+  padding: 40px;
+  background: #95318f;
+  width: 25%;
+}
+.backend__rightBox {
+  padding: 40px;
+  width: 75%;
+}
+.backendMenu__menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.backendMenu__menu li {
+  list-style: none;
+}
+.backendMenu__menu a {
+  display: block;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1.5em;
+}
+/*# sourceMappingURL=main_style.css.map */

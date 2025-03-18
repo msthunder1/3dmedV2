@@ -1,0 +1,72 @@
+/*
+ ** Oranžne **
+ */
+/*#f7931e;*/
+/*
+ ** Sive **
+ */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+  color: #646464; }
+
+a {
+  text-decoration: none;
+  color: #ff4d4d; }
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type=number] {
+  -moz-appearance: textfield; }
+
+.login {
+  background: url('/wp-content/uploads/2020/01/coverphoto_homepagemed.jpg');
+  background-size: cover; }
+  .login #login {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 70px 70px -25px #171717;
+    top: 100px;
+    width: 500px !important;
+    border-top: 10px solid #ff4d4d; }
+  @media (max-width: 767px) {
+  .login {
+    width: 90% !important;
+    box-sizing: border-box;
+    top: 50px; } }
+  .login h1 {
+    display: none; }
+  .login form {
+    background: transparent;
+    border: 0 none;
+    box-shadow: none;
+    padding: 0; }
+  .login .message {
+    border-left: 4px solid #ff4d4d; }
+  .login .message a {
+    display: none; }
+  .login input[type=text]:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 0 1px #ff4d4d; }
+  .login .submit .button {
+    display: block;
+    width: 100%;
+    padding: 8px 40px;
+    border: 0;
+    color: #fff;
+    background: #ff4d4d;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    line-height: 1.2em; }
+  .login #nav {
+    display: none; }
+  .login #backtoblog {
+    padding: 0; }
+/*# sourceMappingURL=login.css.map */
