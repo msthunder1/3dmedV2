@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<ruleset name="ThreeDMed">
+    <description>WordPress coding standards for 3D Med Theme</description>
+
+    <!-- Check PHP files in src directory -->
+    <file>./src</file>
+
+    <!-- Show progress -->
+    <arg value="ps"/>
+
+    <!-- Show colors in terminal -->
+    <arg name="colors"/>
+
+    <!-- Use WordPress-Extra ruleset -->
+    <rule ref="WordPress-Extra">
+        <!-- Allow short array syntax -->
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+        
+        <!-- Allow multiple assignments on same line (for compact code) -->
+        <exclude name="Squiz.PHP.DisallowMultipleAssignments"/>
+    </rule>
+
+    <!-- Enforce WordPress naming conventions for hooks -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="threedmed"/>
+                <element value="ThreeDMed"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Check for PHP compatibility -->
+    <config name="testVersion" value="7.4-"/>
+    <rule ref="PHPCompatibilityWP"/>
+
+    <!-- Check text domain -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="threedmed"/>
+            </property>
+        </properties>
+    </rule>
+</ruleset>
