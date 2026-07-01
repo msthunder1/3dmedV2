@@ -63,6 +63,28 @@ function register_services( Container $container ) {
     $container->get( 'script_enqueuer' )->init();
     $container->get( 'style_enqueuer' )->init();
 
+    // Custom Post Types
+    $post_types = [
+        'status_post_type'         => CustomPostTypes\StatusPostType::class,
+        'pricing_post_type'        => CustomPostTypes\PricingPostType::class,
+        'customer_post_type'       => CustomPostTypes\CustomerPostType::class,
+        'material_post_type'       => CustomPostTypes\MaterialPostType::class,
+        'material_cnc_post_type'   => CustomPostTypes\MaterialCncPostType::class,
+        'color_cnc_post_type'      => CustomPostTypes\ColorCncPostType::class,
+        'seeder_post_type'         => CustomPostTypes\SeederPostType::class,
+        'order_post_type'          => CustomPostTypes\OrderPostType::class,
+        'invoice_post_type'        => CustomPostTypes\InvoicePostType::class,
+        'email_template_post_type' => CustomPostTypes\EmailTemplatePostType::class,
+    ];
+
+    foreach ( $post_types as $name => $class ) {
+        $container->register( $name, function() use ( $class ) {
+            return new $class();
+        });
+        
+        $container->get( $name )->register();
+    }
+
     // TODO: Register other services (CPTs, repositories, services, etc.)
 }
 
