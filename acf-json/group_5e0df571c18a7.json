@@ -1,0 +1,90 @@
+{
+    "key": "group_5e0df571c18a7",
+    "title": "Materiali",
+    "fields": [
+        {
+            "key": "field_5e0df589b6db1",
+            "label": "Gostota [g\/cm3]",
+            "name": "gostota",
+            "type": "number",
+            "instructions": "Oblika xxx.xx zapisana z decimalno piko in ne vejico! [g\/cm3]",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5e0df66fb6db2",
+            "label": "Privzeto",
+            "name": "privzeto",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "da": "Da"
+            },
+            "allow_custom": 0,
+            "default_value": [
+                "ne"
+            ],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "array",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5e0df703b6db3",
+            "label": "Pozicija",
+            "name": "pozicija",
+            "type": "range",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 1,
+            "max": 10,
+            "step": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "materiali"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1783019903
+}

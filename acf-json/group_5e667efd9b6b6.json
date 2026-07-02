@@ -1,0 +1,59 @@
+{
+    "key": "group_5e667efd9b6b6",
+    "title": "Fakture, naročila",
+    "fields": [
+        {
+            "key": "field_5e667f137f970",
+            "label": "Status fakture",
+            "name": "status_fakture",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Odprto": "Odprto",
+                "Predračun": "Predračun",
+                "Račun": "Račun"
+            },
+            "default_value": [
+                "Odprto"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "narocila"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "fakture"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1783019889
+}

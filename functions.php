@@ -128,3 +128,19 @@ function container() {
  * Remove admin bar for all users
  */
 add_filter( 'show_admin_bar', '__return_false' );
+
+/**
+ * Check required plugins
+ *
+ * @return void
+ */
+function check_required_plugins() {
+    if ( ! function_exists( 'get_field' ) ) {
+        add_action( 'admin_notices', function() {
+            echo '<div class="notice notice-error"><p>';
+            esc_html_e( '3D Med Theme requires Advanced Custom Fields plugin to be active.', 'threedmed' );
+            echo '</p></div>';
+        } );
+    }
+}
+add_action( 'admin_init', __NAMESPACE__ . '\\check_required_plugins' );

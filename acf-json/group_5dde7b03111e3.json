@@ -1,0 +1,210 @@
+{
+    "key": "group_5dde7b03111e3",
+    "title": "Sejanja",
+    "fields": [
+        {
+            "key": "field_68d2ce2f5941d",
+            "label": "Tip sejanja",
+            "name": "tip_sejanja",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "3dtisk": "3dTisk",
+                "rezkanje": "Rezkanje"
+            },
+            "default_value": [
+                "3dtisk"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5dde7ecc6db7c",
+            "label": "Material",
+            "name": "material",
+            "type": "post_object",
+            "instructions": "Izberite Material",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68d2ce2f5941d",
+                        "operator": "==",
+                        "value": "3dtisk"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "materiali"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_68d2cf0f5941e",
+            "label": "Material za rezkanje",
+            "name": "material_za_rezkanje",
+            "type": "post_object",
+            "instructions": "Izberite Material",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68d2ce2f5941d",
+                        "operator": "==",
+                        "value": "rezkanje"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "materializarezkanje"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5dde7f816db7d",
+            "label": "Vsebnik",
+            "name": "vsebnik",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5dde7fd46db7e",
+            "label": "Sito",
+            "name": "sito",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5dde7fea6db7f",
+            "label": "Datum sejanja",
+            "name": "datum_sejanja",
+            "type": "date_picker",
+            "instructions": "Datum sejanja",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
+            "key": "field_5dde80166db80",
+            "label": "Sejalec",
+            "name": "sejalec",
+            "type": "user",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": [
+                "3dmed_admin",
+                "3dmed_mini_admin"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id"
+        },
+        {
+            "key": "field_5dde804a6db81",
+            "label": "Šarža",
+            "name": "sarza",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "sejanja"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1783019913
+}
