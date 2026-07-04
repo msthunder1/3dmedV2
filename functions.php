@@ -85,7 +85,12 @@ function register_services( Container $container ) {
         $container->get( $name )->register();
     }
 
-    // TODO: Register other services (CPTs, repositories, services, etc.)
+    // Widget areas (sidebars) registration.
+    $container->register( 'sidebars', function() {
+        return new Widgets\Sidebars();
+    });
+
+    $container->get( 'sidebars' )->init();
 }
 
 /**
