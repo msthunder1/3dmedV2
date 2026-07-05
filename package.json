@@ -1,0 +1,13 @@
+{
+    "name": "threedmed-theme",
+    "version": "2.0.0",
+    "description": "3D Med Theme",
+    "scripts": {
+        "sass": "sass assets/scss:assets/css --style=expanded --source-map",
+        "sass:watch": "sass --watch assets/scss:assets/css --style=expanded --source-map",
+        "sass:build": "sass assets/scss:assets/css --style=compressed --no-source-map"
+    },
+    "devDependencies": {
+        "sass": "^1.69.0"
+    }
+}
