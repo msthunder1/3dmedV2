@@ -91,6 +91,13 @@ function register_services( Container $container ) {
     });
 
     $container->get( 'sidebars' )->init();
+
+    // Custom user roles.
+    $container->register( 'role_manager', function() {
+        return new Roles\RoleManager();
+    });
+
+    $container->get( 'role_manager' )->init();
 }
 
 /**
