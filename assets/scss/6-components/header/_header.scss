@@ -1,0 +1,59 @@
+@use '../../1-settings' as *;
+@use '../../2-tools' as *;
+
+.site-header {
+    background: $color-primary;
+    color: $color-white;
+    padding: $spacing-md 0;
+
+    &__inner {
+        max-width: $max-width;
+        margin: 0 auto;
+        padding: 0 $container-padding;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $spacing-lg;
+
+        @include mobile {
+            flex-direction: column;
+            gap: $spacing-md;
+        }
+    }
+
+    &__logo {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+
+        a {
+            color: $color-white;
+
+            &:hover {
+                text-decoration: none;
+                opacity: 0.8;
+            }
+        }
+    }
+
+    &__nav {
+        ul {
+            display: flex;
+            gap: $spacing-lg;
+
+            @include mobile {
+                flex-direction: column;
+                gap: $spacing-sm;
+                text-align: center;
+            }
+        }
+
+        a {
+            color: $color-white;
+
+            &:hover {
+                text-decoration: none;
+                opacity: 0.8;
+            }
+        }
+    }
+}

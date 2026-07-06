@@ -1,0 +1,32 @@
+@use '../1-settings' as *;
+
+body {
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $color-text;
+    background: $color-background;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 $spacing-md;
+    line-height: $line-height-tight;
+    font-weight: $font-weight-bold;
+}
+
+h1 { font-size: $font-size-2xl; }
+h2 { font-size: $font-size-xl; }
+h3 { font-size: $font-size-lg; }
+
+p {
+    margin: 0 0 $spacing-md;
+}
+
+a {
+    color: $color-primary;
+
+    &:hover {
+        color: $color-primary-dark;
+        text-decoration: underline;
+    }
+}

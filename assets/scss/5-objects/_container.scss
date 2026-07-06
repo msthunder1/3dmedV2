@@ -1,0 +1,8 @@
+@use '../1-settings' as *;
+
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    width: 100%;
+}

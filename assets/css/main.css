@@ -1,3 +1,182 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 16px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+a {
+  color: #8b2fc7;
+}
+a:hover {
+  color: #6a1e9c;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.site-header {
+  background: #8b2fc7;
+  color: #ffffff;
+  padding: 16px 0;
+}
+.site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (max-width: 480px) {
+  .site-header__inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+.site-header__logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+.site-header__logo a {
+  color: #ffffff;
+}
+.site-header__logo a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+.site-header__nav ul {
+  display: flex;
+  gap: 24px;
+}
+@media (max-width: 480px) {
+  .site-header__nav ul {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+.site-header__nav a {
+  color: #ffffff;
+}
+.site-header__nav a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.site-footer {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 48px 0;
+  margin-top: 96px;
+}
+.site-footer__top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.site-footer__columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+@media (max-width: 768px) {
+  .site-footer__columns {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+.site-footer__column h3 {
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.site-footer__column p {
+  color: #e0e0e0;
+}
+.site-footer__column a {
+  color: #a854d9;
+}
+.site-footer__column a:hover {
+  color: #ffffff;
+}
+.site-footer__bottom {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding: 24px 20px 0;
+  border-top: 1px solid #555555;
+  text-align: center;
+  color: #e0e0e0;
+}
+.site-footer__copyright {
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 16px 20px 0;
+  text-align: center;
+  color: #999999;
+  font-size: 14px;
+  border-top: 1px solid #555555;
+}
 
 /*# sourceMappingURL=main.css.map */

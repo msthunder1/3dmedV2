@@ -44,4 +44,4 @@
             </div>
         </header>
 
-        <div class="content__wrapper">
+        <main id="main" class="site-main container" role="main">

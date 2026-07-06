@@ -1,0 +1,64 @@
+@use '../../1-settings' as *;
+@use '../../2-tools' as *;
+
+.site-footer {
+    background: $color-background-dark;
+    color: $color-white;
+    padding: $spacing-xl 0;
+    margin-top: $spacing-2xl;
+
+    &__top {
+        max-width: $max-width;
+        margin: 0 auto;
+        padding: 0 $container-padding;
+    }
+
+    &__columns {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-xl;
+
+        @include tablet {
+            grid-template-columns: 1fr;
+            gap: $spacing-lg;
+        }
+    }
+
+    &__column {
+        h3 {
+            color: $color-white;
+            margin-bottom: $spacing-md;
+        }
+
+        p {
+            color: $color-gray-200;
+        }
+
+        a {
+            color: $color-primary-light;
+
+            &:hover {
+                color: $color-white;
+            }
+        }
+    }
+
+    &__bottom {
+        max-width: $max-width;
+        margin: $spacing-xl auto 0;
+        padding: $spacing-lg $container-padding 0;
+        border-top: 1px solid $color-gray-700;
+        text-align: center;
+        color: $color-gray-200;
+    }
+
+    &__copyright {
+        max-width: $max-width;
+        margin: $spacing-md auto 0;
+        padding: $spacing-md $container-padding 0;
+        text-align: center;
+        color: $color-gray-500;
+        font-size: $font-size-sm;
+        border-top: 1px solid $color-gray-700;
+    }
+}
