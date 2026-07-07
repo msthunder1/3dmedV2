@@ -98,6 +98,16 @@ function register_services( Container $container ) {
     });
 
     $container->get( 'role_manager' )->init();
+
+    // Repositories
+    $container->register( 'customer_repository', function() {
+        return new Repositories\CustomerRepository();
+    });
+
+    // Services
+    $container->register( 'customer_service', function( $c ) {
+        return new Services\CustomerService( $c->get( 'customer_repository' ) );
+    });
 }
 
 /**
