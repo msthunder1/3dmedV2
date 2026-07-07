@@ -80,7 +80,7 @@ abstract class AbstractRepository {
         // Map data to post meta fields
         $meta_data = $this->mapDataToMeta($data);
         foreach ($meta_data as $key => $value) {
-            \update_post_meta($post_id, $key, $value);
+            \update_field($key, $post_id, $value);
         }
 
         return $post_id; // Return the ID of the created post
