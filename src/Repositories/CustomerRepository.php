@@ -18,23 +18,24 @@ class CustomerRepository extends AbstractRepository {
 
     /**
      * Map data to post meta fields
-     * 
+     *
      * @param array $data The data to map to post meta
      * @return array
      */
-    protected function mapDataToMeta($data) {
+    protected function mapDataToMeta( $data ) {
         return [
-            // ACF field name => Form data key
-            'ime_podjetja' => $data['company_name'] ?? '',
-            'kratko_ime' => $data['short_name'] ?? '',
-            'davcna_stevilka' => $data['vat_number'] ?? '',
-            'zavezanec_za_ddv' => $data['vat_liable'] ?? false,
+            // ACF field name       => Form data key
+            'ime_podjetja'          => $data['company_name'] ?? '',
+            'kratko_ime'            => $data['short_name'] ?? '',
+            'davcna_stevilka'       => $data['vat_number'] ?? '',
+            'zavezanec_za_ddv'      => ! empty( $data['vat_liable'] ),
             'ulica_in_hisna_stevilka' => $data['street'] ?? '',
-            'postna_stevilka' => $data['postal_code'] ?? '',
-            'mesto' => $data['city'] ?? '',
-            'drzava' => $data['country'] ?? '',
-            'email_podjetja' => $data['email'] ?? '',
-            'telefon_podjetja' => $data['phone'] ?? '',
+            'postna_stevilka'       => $data['postal_code'] ?? '',
+            'mesto'                 => $data['city'] ?? '',
+            'drzava'                => $data['country'] ?? '',
+            'email_podjetja'        => $data['company_email'] ?? '',
+            'telefon_podjetja'      => $data['company_phone'] ?? '',
+            'zastopnik'             => $data['user_id'] ?? null,
         ];
     }
 

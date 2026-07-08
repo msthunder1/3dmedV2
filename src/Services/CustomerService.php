@@ -21,66 +21,118 @@ class CustomerService {
      *
      * @param CustomerRepository $customerRepository
      */
-    public function __construct(CustomerRepository $customerRepository) {
+    public function __construct( CustomerRepository $customerRepository ) {
         $this->customerRepository = $customerRepository;
     }
 
-    public function register ($data) {
-        // validate required fields
-        $requiredFields = ['company_name', 'short_name', 'vat_number', 'street', 'postal_code', 'city', 'country', 'email', 'phone', 'password'];
-        foreach ($requiredFields as $field) {
-            if (empty($data[$field])) {
+    /**
+     * Register a new customer (creates WP user for representative + customer post + links them)
+     *
+     * @param array $data Registration data
+     * @return array Result with success status and message
+     */
+    public function register( $data ) {
+
+        // Validate required fields
+        $required_fields = [
+            'company_name',
+            'vat_number',
+            'street',
+            'postal_code',
+            'city',
+            'country',
+            'company_email',
+            'company_phone',
+            'rep_first_name',
+            'rep_last_name',
+            'rep_email',
+            'rep_phone',
+            'password',
+            'password_confirm',
+        ];
+
+        foreach ( $required_fields as $field ) {
+            if ( empty( $data[ $field ] ) ) {
                 return [
                     'success' => false,
-                    'message' => \sprintf(__('Missing required field: %s', 'threedmed'), $field),
+                    'message' => \sprintf(
+                        \__( 'Missing required field: %s', 'threedmed' ),
+                        $field
+                    ),
                 ];
             }
         }
 
-        // Check if email not already used
-        if (\email_exists($data['email'])) {
+        // Check terms accepted
+        if ( empty( $data['terms_accepted'] ) ) {
             return [
                 'success' => false,
-                'message' => \__('Email already exists.', 'threedmed'),
+                'message' => \__( 'You must accept the terms of use.', 'threedmed' ),
             ];
         }
 
-        // Create WP user with wp_create_user
-        $userId = \wp_create_user($data['email'], $data['password'], $data['email']);
-        if (\is_wp_error($userId)) {
+        // Check passwords match
+        if ( $data['password'] !== $data['password_confirm'] ) {
             return [
                 'success' => false,
-                'message' => \__('Failed to create user.', 'threedmed'),
+                'message' => \__( 'Passwords do not match.', 'threedmed' ),
             ];
         }
 
-        // Create a new customer post using this->repository->create()
-        $data['post_title'] = $data['company_name']; // Set post title to company name
-        $customer_id = $this->customerRepository->create($data);
-
-        if(\is_wp_error($customer_id)) {
-            // Rollback user creation if customer post creation fails
-            \wp_delete_user($userId);
+        // Check representative email not already used
+        if ( \email_exists( $data['rep_email'] ) ) {
             return [
                 'success' => false,
-                'message' => \__('Failed to create customer post.', 'threedmed'),
+                'message' => \__( 'This representative email is already registered.', 'threedmed' ),
             ];
         }
 
-        // Link them - update_user_meta($user_id, 'id_podjetja', $customer_id)
-        \update_user_meta($userId, 'id_podjetja', $customer_id);
+        // Create WP user for representative
+        $user_id = \wp_insert_user( [
+            'user_login' => $data['rep_email'],
+            'user_email' => $data['rep_email'],
+            'user_pass'  => $data['password'],
+            'first_name' => $data['rep_first_name'],
+            'last_name'  => $data['rep_last_name'],
+            'role'       => '3dmed_stranka',
+        ] );
 
-        // Set user role to 3dmed_stranka
-        $user = new \WP_User($userId);
-        $user->set_role('3dmed_stranka');
+        if ( \is_wp_error( $user_id ) ) {
+            return [
+                'success' => false,
+                'message' => \__( 'Failed to create user.', 'threedmed' ),
+            ];
+        }
 
-        // return success / error array
+        // Save representative meta (phone, company name display)
+        \update_field( 'telefon', $data['rep_phone'], 'user_' . $user_id );
+        \update_field( 'podjetje', $data['company_name'], 'user_' . $user_id );
+
+        // Add user_id to data so repository can save `zastopnik` field on customer
+        $data['user_id']    = $user_id;
+        $data['post_title'] = $data['company_name'];
+
+        // Create customer post
+        $customer_id = $this->customerRepository->create( $data );
+
+        if ( \is_wp_error( $customer_id ) ) {
+            // Rollback: delete the user we just created
+            \wp_delete_user( $user_id );
+
+            return [
+                'success' => false,
+                'message' => \__( 'Failed to create customer.', 'threedmed' ),
+            ];
+        }
+
+        // Link user to customer post
+        \update_field( 'id_podjetja', $customer_id, 'user_' . $user_id );
+
         return [
-            'success' => true,
-            'message' => \__('Customer registered successfully.', 'threedmed'),
-            'user_id' => $userId,
-            'customer_post_id' => $customer_id,
+            'success'     => true,
+            'message'     => \__( 'Registration successful.', 'threedmed' ),
+            'user_id'     => $user_id,
+            'customer_id' => $customer_id,
         ];
-        
     }
 }

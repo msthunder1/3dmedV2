@@ -108,6 +108,13 @@ function register_services( Container $container ) {
     $container->register( 'customer_service', function( $c ) {
         return new Services\CustomerService( $c->get( 'customer_repository' ) );
     });
+
+    // Shortcodes
+    $container->register( 'shortcodes', function() {
+        return new Shortcodes\RegistrationShortcode();
+    });
+
+    $container->get( 'shortcodes' )->init();
 }
 
 /**
