@@ -12,7 +12,7 @@ namespace ThreeDMed;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 // Theme constants.
@@ -29,17 +29,17 @@ require_once THREEDMED_PATH . '/vendor/autoload.php';
  * @return void
  */
 function init() {
-    // Create dependency injection container.
-    $container = new Container();
+	// Create dependency injection container.
+	$container = new Container();
 
-    // Register services in container.
-    register_services( $container );
+	// Register services in container.
+	register_services( $container );
 
-    // Initialize theme features.
-    setup_theme_support();
-    
-    // Store container globally.
-    $GLOBALS['threedmed_container'] = $container;
+	// Initialize theme features.
+	setup_theme_support();
+
+	// Store container globally.
+	$GLOBALS['threedmed_container'] = $container;
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\init' );
 
@@ -50,71 +50,105 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\init' );
  * @return void
  */
 function register_services( Container $container ) {
-    // Assets.
-    $container->register( 'script_enqueuer', function() {
-        return new Assets\ScriptEnqueuer();
-    });
-    
-    $container->register( 'style_enqueuer', function() {
-        return new Assets\StyleEnqueuer();
-    });
+	// Assets.
+	$container->register(
+		'script_enqueuer',
+		function () {
+			return new Assets\ScriptEnqueuer();
+		}
+	);
 
-    // Initialize asset loading.
-    $container->get( 'script_enqueuer' )->init();
-    $container->get( 'style_enqueuer' )->init();
+	$container->register(
+		'style_enqueuer',
+		function () {
+			return new Assets\StyleEnqueuer();
+		}
+	);
 
-    // Custom Post Types
-    $post_types = [
-        'status_post_type'         => CustomPostTypes\StatusPostType::class,
-        'pricing_post_type'        => CustomPostTypes\PricingPostType::class,
-        'customer_post_type'       => CustomPostTypes\CustomerPostType::class,
-        'material_post_type'       => CustomPostTypes\MaterialPostType::class,
-        'material_cnc_post_type'   => CustomPostTypes\MaterialCncPostType::class,
-        'color_cnc_post_type'      => CustomPostTypes\ColorCncPostType::class,
-        'seeder_post_type'         => CustomPostTypes\SeederPostType::class,
-        'order_post_type'          => CustomPostTypes\OrderPostType::class,
-        'invoice_post_type'        => CustomPostTypes\InvoicePostType::class,
-        'email_template_post_type' => CustomPostTypes\EmailTemplatePostType::class,
-    ];
+	// Initialize asset loading.
+	$container->get( 'script_enqueuer' )->init();
+	$container->get( 'style_enqueuer' )->init();
 
-    foreach ( $post_types as $name => $class ) {
-        $container->register( $name, function() use ( $class ) {
-            return new $class();
-        });
-        
-        $container->get( $name )->register();
-    }
+	// Custom Post Types
+	$post_types = array(
+		'status_post_type'         => CustomPostTypes\StatusPostType::class,
+		'pricing_post_type'        => CustomPostTypes\PricingPostType::class,
+		'customer_post_type'       => CustomPostTypes\CustomerPostType::class,
+		'material_post_type'       => CustomPostTypes\MaterialPostType::class,
+		'material_cnc_post_type'   => CustomPostTypes\MaterialCncPostType::class,
+		'color_cnc_post_type'      => CustomPostTypes\ColorCncPostType::class,
+		'seeder_post_type'         => CustomPostTypes\SeederPostType::class,
+		'order_post_type'          => CustomPostTypes\OrderPostType::class,
+		'invoice_post_type'        => CustomPostTypes\InvoicePostType::class,
+		'email_template_post_type' => CustomPostTypes\EmailTemplatePostType::class,
+	);
 
-    // Widget areas (sidebars) registration.
-    $container->register( 'sidebars', function() {
-        return new Widgets\Sidebars();
-    });
+	foreach ( $post_types as $name => $class ) {
+		$container->register(
+			$name,
+			function () use ( $class ) {
+				return new $class();
+			}
+		);
 
-    $container->get( 'sidebars' )->init();
+		$container->get( $name )->register();
+	}
 
-    // Custom user roles.
-    $container->register( 'role_manager', function() {
-        return new Roles\RoleManager();
-    });
+	// Widget areas (sidebars) registration.
+	$container->register(
+		'sidebars',
+		function () {
+			return new Widgets\Sidebars();
+		}
+	);
 
-    $container->get( 'role_manager' )->init();
+	$container->get( 'sidebars' )->init();
 
-    // Repositories
-    $container->register( 'customer_repository', function() {
-        return new Repositories\CustomerRepository();
-    });
+	// Custom user roles.
+	$container->register(
+		'role_manager',
+		function () {
+			return new Roles\RoleManager();
+		}
+	);
 
-    // Services
-    $container->register( 'customer_service', function( $c ) {
-        return new Services\CustomerService( $c->get( 'customer_repository' ) );
-    });
+	$container->get( 'role_manager' )->init();
 
-    // Shortcodes
-    $container->register( 'shortcodes', function() {
-        return new Shortcodes\RegistrationShortcode();
-    });
+	// Repositories
+	$container->register(
+		'customer_repository',
+		function () {
+			return new Repositories\CustomerRepository();
+		}
+	);
 
-    $container->get( 'shortcodes' )->init();
+	// Services
+	$container->register(
+		'customer_service',
+		function ( $c ) {
+			return new Services\CustomerService( $c->get( 'customer_repository' ) );
+		}
+	);
+
+	// Shortcodes
+	$container->register(
+		'registration_shortcode',
+		function () {
+			return new Shortcodes\RegistrationShortcode();
+		}
+	);
+
+	$container->get( 'registration_shortcode' )->init();
+
+	// AJAX handlers
+	$container->register(
+		'registration_handler',
+		function ( $c ) {
+			return new Ajax\RegistrationHandler( $c->get( 'customer_service' ) );
+		}
+	);
+
+	$container->get( 'registration_handler' )->init();
 }
 
 /**
@@ -123,25 +157,27 @@ function register_services( Container $container ) {
  * @return void
  */
 function setup_theme_support() {
-    // Post thumbnails.
-    add_theme_support( 'post-thumbnails' );
+	// Post thumbnails.
+	add_theme_support( 'post-thumbnails' );
 
-    // Custom image sizes.
-    add_image_size( 'threedmed-largest', 1800, 9999 );
-    add_image_size( 'threedmed-laptop', 1480, 9999 );
-    add_image_size( 'threedmed-tablet', 1024, 9999 );
-    add_image_size( 'threedmed-small', 768, 9999 );
-    add_image_size( 'threedmed-smaller', 479, 9999 );
-    add_image_size( 'threedmed-tiny', 250, 9999 );
-    add_image_size( 'threedmed-tiniest', 75, 9999 );
+	// Custom image sizes.
+	add_image_size( 'threedmed-largest', 1800, 9999 );
+	add_image_size( 'threedmed-laptop', 1480, 9999 );
+	add_image_size( 'threedmed-tablet', 1024, 9999 );
+	add_image_size( 'threedmed-small', 768, 9999 );
+	add_image_size( 'threedmed-smaller', 479, 9999 );
+	add_image_size( 'threedmed-tiny', 250, 9999 );
+	add_image_size( 'threedmed-tiniest', 75, 9999 );
 
-    // Register navigation menus.
-    register_nav_menus([
-        'header-menu' => __( 'Header Menu', 'threedmed' ),
-    ]);
+	// Register navigation menus.
+	register_nav_menus(
+		array(
+			'header-menu' => __( 'Header Menu', 'threedmed' ),
+		)
+	);
 
-    // Load text domain for translations.
-    load_theme_textdomain( 'threedmed', THREEDMED_PATH . '/languages' );
+	// Load text domain for translations.
+	load_theme_textdomain( 'threedmed', THREEDMED_PATH . '/languages' );
 }
 
 /**
@@ -150,7 +186,7 @@ function setup_theme_support() {
  * @return Container
  */
 function container() {
-    return $GLOBALS['threedmed_container'];
+	return $GLOBALS['threedmed_container'];
 }
 
 /**
@@ -164,12 +200,15 @@ add_filter( 'show_admin_bar', '__return_false' );
  * @return void
  */
 function check_required_plugins() {
-    if ( ! function_exists( 'get_field' ) ) {
-        add_action( 'admin_notices', function() {
-            echo '<div class="notice notice-error"><p>';
-            esc_html_e( '3D Med Theme requires Advanced Custom Fields plugin to be active.', 'threedmed' );
-            echo '</p></div>';
-        } );
-    }
+	if ( ! function_exists( 'get_field' ) ) {
+		add_action(
+			'admin_notices',
+			function () {
+				echo '<div class="notice notice-error"><p>';
+				esc_html_e( '3D Med Theme requires Advanced Custom Fields plugin to be active.', 'threedmed' );
+				echo '</p></div>';
+			}
+		);
+	}
 }
 add_action( 'admin_init', __NAMESPACE__ . '\\check_required_plugins' );

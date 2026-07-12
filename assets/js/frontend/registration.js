@@ -14,7 +14,7 @@
     const submitButton = form.querySelector('button[type="submit"]');
 
     /**
-     * Show a message to the user
+     * Show a global message (success or general error)
      */
     function showMessage(text, type) {
         messagesContainer.textContent = text;
@@ -22,35 +22,53 @@
     }
 
     /**
-     * Clear messages
+     * Clear all error messages (global + per-field)
      */
-    function clearMessages() {
+    function clearErrors() {
         messagesContainer.textContent = '';
         messagesContainer.className = 'registration__messages';
+
+        // Remove any existing field errors
+        form.querySelectorAll('.form-field__error').forEach(el => el.remove());
+        form.querySelectorAll('.form-field--has-error').forEach(el => {
+            el.classList.remove('form-field--has-error');
+        });
     }
 
     /**
-     * Client-side validation
+     * Display errors from server (per-field)
      */
-    function validateForm() {
-        const v = window.threedmedValidators;
-        const password = form.querySelector('#password').value;
-        const passwordConfirm = form.querySelector('#password_confirm').value;
-        const terms = form.querySelector('#terms_accepted');
+    function displayErrors(errors) {
+        Object.keys(errors).forEach(fieldName => {
+            const message = errors[fieldName];
 
-        if (!v.passwordsMatch(password, passwordConfirm)) {
-            return strings.passwordsNoMatch;
-        }
+            // General error - show at top
+            if (fieldName === 'general') {
+                showMessage(message, 'error');
+                return;
+            }
 
-        if (!v.passwordLength(password, 8)) {
-            return strings.passwordTooShort;
-        }
+            // Find the input field
+            const input = form.querySelector('[name="' + fieldName + '"]');
+            if (!input) {
+                return;
+            }
 
-        if (!v.isChecked(terms)) {
-            return strings.termsRequired;
-        }
+            // Find the parent form-field wrapper
+            const wrapper = input.closest('.form-field');
+            if (!wrapper) {
+                return;
+            }
 
-        return null;
+            // Add error class
+            wrapper.classList.add('form-field--has-error');
+
+            // Create error message element
+            const errorEl = document.createElement('span');
+            errorEl.className = 'form-field__error';
+            errorEl.textContent = message;
+            wrapper.appendChild(errorEl);
+        });
     }
 
     /**
@@ -58,13 +76,7 @@
      */
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        clearMessages();
-
-        const validationError = validateForm();
-        if (validationError) {
-            showMessage(validationError, 'error');
-            return;
-        }
+        clearErrors();
 
         submitButton.disabled = true;
         submitButton.textContent = strings.registering;
@@ -86,7 +98,12 @@
                 showMessage(result.data.message, 'success');
                 form.reset();
             } else {
-                showMessage(result.data.message || strings.registrationFailed, 'error');
+                // Display all field errors
+                if (result.data && result.data.errors) {
+                    displayErrors(result.data.errors);
+                } else {
+                    showMessage(strings.registrationFailed, 'error');
+                }
             }
         } catch (error) {
             showMessage(strings.networkError, 'error');

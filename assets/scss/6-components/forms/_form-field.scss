@@ -1,0 +1,14 @@
+.form-field {
+    &__error {
+        display: block;
+        color: red;
+        font-size: 0.875rem;
+        margin-top: 4px;
+    }
+
+    &--has-error {
+        input {
+            border-color: red;
+        }
+    }
+}

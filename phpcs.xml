@@ -18,6 +18,11 @@
         
         <!-- Allow multiple assignments on same line (for compact code) -->
         <exclude name="Squiz.PHP.DisallowMultipleAssignments"/>
+
+        <!-- src/ is PSR-4 autoloaded (ThreeDMed\ => src/), so files must be
+             named after their class, not WordPress core's lowercase-hyphenated /
+             class-*.php convention -->
+        <exclude name="WordPress.Files.FileName"/>
     </rule>
 
     <!-- Enforce WordPress naming conventions for hooks -->

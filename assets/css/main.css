@@ -179,4 +179,14 @@ a:hover {
   border-top: 1px solid #555555;
 }
 
+.form-field__error {
+  display: block;
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+.form-field--has-error input {
+  border-color: red;
+}
+
 /*# sourceMappingURL=main.css.map */
