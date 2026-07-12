@@ -7,10 +7,8 @@
 
 // Guard: redirect logged-in users
 if ( \is_user_logged_in() ) {
-	/*
 	\wp_safe_redirect( \home_url( '/' ) );
 	exit;
-	*/
 }
 ?>
 
@@ -78,13 +76,13 @@ if ( \is_user_logged_in() ) {
 				</label>
 				<select id="country" name="country" class="js-choices" required>
 					<?php
-					$field = \acf_get_field( 'drzava' );
-					if ( ! empty( $field['choices'] ) ) {
-						foreach ( $field['choices'] as $value => $label ) {
+					$threedmed_country_field = \acf_get_field( 'drzava' );
+					if ( ! empty( $threedmed_country_field['choices'] ) ) {
+						foreach ( $threedmed_country_field['choices'] as $threedmed_country_value => $threedmed_country_label ) {
 							printf(
 								'<option value="%s">%s</option>',
-								\esc_attr( $value ),
-								\esc_html( $label )
+								\esc_attr( $threedmed_country_value ),
+								\esc_html( $threedmed_country_label )
 							);
 						}
 					}
@@ -160,8 +158,8 @@ if ( \is_user_logged_in() ) {
 				<input type="checkbox" id="terms_accepted" name="terms_accepted" value="1" required>
 				<?php
 				printf(
-					/* translators: %s: link to terms of use page */
 					\wp_kses(
+						/* translators: %s: link to terms of use page */
 						\__( 'I agree to the <a href="%s" target="_blank">terms of use</a>', 'threedmed' ),
 						array(
 							'a' => array(
