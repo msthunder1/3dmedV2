@@ -140,6 +140,16 @@ function register_services( Container $container ) {
 
 	$container->get( 'registration_shortcode' )->init();
 
+	// Shortcodes - Login
+	$container->register(
+		'login_shortcode',
+		function () {
+			return new Shortcodes\LoginShortcode();
+		}
+	);
+
+	$container->get( 'login_shortcode' )->init();
+
 	// AJAX handlers
 	$container->register(
 		'registration_handler',
@@ -149,6 +159,24 @@ function register_services( Container $container ) {
 	);
 
 	$container->get( 'registration_handler' )->init();
+
+	// Auth service
+	$container->register(
+		'auth_service',
+		function () {
+			return new Services\AuthService();
+		}
+	);
+
+	// Login AJAX handler
+	$container->register(
+		'login_handler',
+		function ( $c ) {
+			return new Ajax\LoginHandler( $c->get( 'auth_service' ) );
+		}
+	);
+
+	$container->get( 'login_handler' )->init();
 }
 
 /**

@@ -8,6 +8,7 @@
 namespace ThreeDMed\Assets;
 
 use ThreeDMed\Strings\RegistrationStrings;
+use ThreeDMed\Strings\LoginStrings;
 
 class ScriptEnqueuer {
 
@@ -70,6 +71,25 @@ class ScriptEnqueuer {
 			array( 'choices-js' ),
 			THREEDMED_VERSION,
 			true
+		);
+
+		// Login script
+		\wp_enqueue_script(
+			'threedmed-login',
+			THREEDMED_URL . '/assets/js/frontend/login.js',
+			array(),
+			THREEDMED_VERSION,
+			true
+		);
+
+		// Pass PHP data + translated strings to login JS
+		\wp_localize_script(
+			'threedmed-login',
+			'threedmedLogin',
+			array(
+				'ajaxUrl' => \admin_url( 'admin-ajax.php' ),
+				'strings' => LoginStrings::get_strings(),
+			)
 		);
 	}
 }

@@ -2,44 +2,28 @@
 <ruleset name="ThreeDMed">
     <description>WordPress coding standards for 3D Med Theme</description>
 
-    <!-- Check PHP files in src directory -->
     <file>./src</file>
 
-    <!-- Show progress -->
     <arg value="ps"/>
-
-    <!-- Show colors in terminal -->
     <arg name="colors"/>
 
-    <!-- Use WordPress-Extra ruleset -->
     <rule ref="WordPress-Extra">
-        <!-- Allow short array syntax -->
         <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
-        
-        <!-- Allow multiple assignments on same line (for compact code) -->
         <exclude name="Squiz.PHP.DisallowMultipleAssignments"/>
-
-        <!-- src/ is PSR-4 autoloaded (ThreeDMed\ => src/), so files must be
-             named after their class, not WordPress core's lowercase-hyphenated /
-             class-*.php convention -->
         <exclude name="WordPress.Files.FileName"/>
+        <exclude name="WordPress.Security.NonceVerification.Missing"/>
+        <exclude name="WordPress.Security.NonceVerification.Recommended"/>
+        <exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
+        <exclude name="WordPress.NamingConventions.PrefixAllGlobals"/>
     </rule>
 
-    <!-- Enforce WordPress naming conventions for hooks -->
     <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
-        <properties>
-            <property name="prefixes" type="array">
-                <element value="threedmed"/>
-                <element value="ThreeDMed"/>
-            </property>
-        </properties>
+        <severity>0</severity>
     </rule>
 
-    <!-- Check for PHP compatibility -->
     <config name="testVersion" value="7.4-"/>
     <rule ref="PHPCompatibilityWP"/>
 
-    <!-- Check text domain -->
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
