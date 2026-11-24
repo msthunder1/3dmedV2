@@ -9,6 +9,7 @@ namespace ThreeDMed\Assets;
 
 use ThreeDMed\Strings\RegistrationStrings;
 use ThreeDMed\Strings\LoginStrings;
+use ThreeDMed\Strings\ProfileStrings;
 
 class ScriptEnqueuer {
 
@@ -89,6 +90,25 @@ class ScriptEnqueuer {
 			array(
 				'ajaxUrl' => \admin_url( 'admin-ajax.php' ),
 				'strings' => LoginStrings::get_strings(),
+			)
+		);
+
+		// Profile script
+		\wp_enqueue_script(
+			'threedmed-profile',
+			THREEDMED_URL . '/assets/js/frontend/profile.js',
+			array(),
+			THREEDMED_VERSION,
+			true
+		);
+
+		// Pass PHP data + translated strings to profile JS
+		\wp_localize_script(
+			'threedmed-profile',
+			'threedmedProfile',
+			array(
+				'ajaxUrl' => \admin_url( 'admin-ajax.php' ),
+				'strings' => ProfileStrings::get(),
 			)
 		);
 	}

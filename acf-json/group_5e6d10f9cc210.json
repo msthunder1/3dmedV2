@@ -213,7 +213,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": ""
+                "value": "threedmed-general-settings"
             }
         ]
     ],
@@ -225,5 +225,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1783019870
+    "modified": 1795557107
 }

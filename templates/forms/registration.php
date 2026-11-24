@@ -168,7 +168,7 @@ if ( \is_user_logged_in() ) {
 							),
 						)
 					),
-					\esc_url( \home_url( '/splosni-pogoji/' ) )
+					\esc_url( \home_url( '/terms-of-use/' ) )
 				);
 				?>
 				<span class="required">*</span>

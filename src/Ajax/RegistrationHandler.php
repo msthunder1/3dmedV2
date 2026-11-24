@@ -46,7 +46,11 @@ class RegistrationHandler extends AbstractAjaxHandler {
 	 */
 	public function handle() {
 		if ( ! $this->verify_nonce() ) {
-			$this->send_error( \__( 'Security check failed.', 'threedmed' ) );
+			$this->send_error(
+				array(
+					'errors' => \__( 'Security check failed.', 'threedmed' ),
+				)
+			);
 		}
 
 		$data = array(

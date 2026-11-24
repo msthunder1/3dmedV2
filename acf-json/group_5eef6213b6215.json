@@ -71,7 +71,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": ""
+                "value": "threedmed-invoice-settings"
             }
         ]
     ],
@@ -83,5 +83,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1783019874
+    "modified": 1795556946
 }

@@ -94,6 +94,16 @@ function register_services( Container $container ) {
 		$container->get( $name )->register();
 	}
 
+	// Admin options pages
+	$container->register(
+		'options_page',
+		function () {
+			return new Admin\OptionsPage();
+		}
+	);
+
+	$container->get( 'options_page' )->init();
+
 	// Widget areas (sidebars) registration.
 	$container->register(
 		'sidebars',
@@ -177,6 +187,34 @@ function register_services( Container $container ) {
 	);
 
 	$container->get( 'login_handler' )->init();
+
+	// Services - Profile
+	$container->register(
+		'profile_service',
+		function ( $c ) {
+			return new Services\ProfileService( $c->get( 'customer_repository' ) );
+		}
+	);
+
+	// Shortcodes - Profile
+	$container->register(
+		'profile_shortcode',
+		function ( $c ) {
+			return new Shortcodes\ProfileShortcode( $c->get( 'profile_service' ) );
+		}
+	);
+
+	$container->get( 'profile_shortcode' )->init();
+
+	// AJAX - Profile update handler
+	$container->register(
+		'profile_update_handler',
+		function ( $c ) {
+			return new Ajax\ProfileUpdateHandler( $c->get( 'profile_service' ) );
+		}
+	);
+
+	$container->get( 'profile_update_handler' )->init();
 }
 
 /**

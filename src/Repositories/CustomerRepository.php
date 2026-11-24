@@ -61,4 +61,14 @@ class CustomerRepository extends AbstractRepository {
 		$query = new \WP_Query( $args );
 		return ! empty( $query->posts ) ? $query->posts[0] : null;
 	}
+
+	/**
+	 * Public wrapper fr mapping data to post meta fields
+	 *
+	 * @param array $data
+	 * @return array
+	 */
+	public function map_data_to_meta_public( $data ) {
+		return $this->mapDataToMeta( $data );
+	}
 }

@@ -51,7 +51,7 @@ $display_name = $user->display_name ?? '';
 		<?php endif; ?>
 
 		<?php if ( '3dmed_stranka' === $user_role ) : ?>
-			<a href="<?php echo \esc_url( \home_url( '/moj-racun/' ) ); ?>" class="user-dashboard__tile user-dashboard__tile--customer">
+			<a href="<?php echo \esc_url( \home_url( '/my-account/' ) ); ?>" class="user-dashboard__tile user-dashboard__tile--customer">
 				<span class="user-dashboard__tile-title">
 					<?php \esc_html_e( 'My Account', 'threedmed' ); ?>
 				</span>
