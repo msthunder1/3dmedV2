@@ -91,13 +91,13 @@ class ProfileUpdateHandler extends AbstractAjaxHandler {
 		if ( $result['success'] ) {
 			$this->send_success(
 				array(
-					'message' => $result['message'] ?? \__( 'Profile updated successfully.', 'threedmed' ),
+					'message' => $result['message'] ?? array( 'general' => \__( 'Profile updated successfully.', 'threedmed' ) ),
 				)
 			);
 		} else {
 			$this->send_error(
 				array(
-					'errors' => $result['errors'] ?? \__( 'Failed to update profile.', 'threedmed' ),
+					'errors' => $result['errors'] ?? array( 'general' => \__( 'Failed to update profile.', 'threedmed' ) ),
 				)
 			);
 		}

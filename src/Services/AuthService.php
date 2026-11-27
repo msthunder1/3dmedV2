@@ -39,7 +39,7 @@ class AuthService {
 			case 'administrator':
 				return \admin_url();
 			case '3dmed_admin':
-				return \home_url( '/dashboard/' );
+				return \home_url( '' );
 			case '3dmed_stranka':
 				return \home_url( '/my-account/' );
 			default:

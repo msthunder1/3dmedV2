@@ -6,8 +6,8 @@
  * @package ThreeDMed
  */
 
-$user = wp_get_current_user();
-$user_role = $user->roles[0] ?? '';
+$user         = wp_get_current_user();
+$user_role    = $user->roles[0] ?? '';
 $display_name = $user->display_name ?? '';
 
 ?>
@@ -40,7 +40,7 @@ $display_name = $user->display_name ?? '';
 		<?php endif; ?>
 
 		<?php if ( in_array( $user_role, array( 'administrator', '3dmed_admin' ), true ) ) : ?>
-			<a href="<?php echo \esc_url( \home_url( '/dashboard/' ) ); ?>" class="user-dashboard__tile user-dashboard__tile--staff">
+			<a href="<?php echo \esc_url( \home_url() ); ?>" class="user-dashboard__tile user-dashboard__tile--staff">
 				<span class="user-dashboard__tile-title">
 					<?php \esc_html_e( 'Staff Dashboard', 'threedmed' ); ?>
 				</span>

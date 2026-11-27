@@ -12,11 +12,11 @@ if ( ! is_user_logged_in() ) {
 	return;
 }
 
-$current_user = wp_get_current_user();
-$user_name    = $current_user->display_name;
+$user         = wp_get_current_user();
+$user_name    = $user->display_name;
 $company_id   = function_exists( 'get_field' )
-	? get_field( 'id_podjetja', 'user_' . $current_user->ID )
-	: get_user_meta( $current_user->ID, 'id_podjetja', true );
+	? get_field( 'id_podjetja', 'user_' . $user->ID )
+	: get_user_meta( $user->ID, 'id_podjetja', true );
 $company_name = $company_id ? ', ' . get_the_title( $company_id ) : '';
 ?>
 
@@ -27,4 +27,7 @@ $company_name = $company_id ? ', ' . get_the_title( $company_id ) : '';
 	<span class="logged-in-bar__name">
 		<?php echo esc_html( $user_name . $company_name ); ?>
 	</span>
+	<a class="button button--secondary logged-in-bar__logout" style="color: #fff;" href="<?php echo esc_url( wp_logout_url() ); ?>">
+		<?php esc_html_e( 'Log out', 'threedmed' ); ?>
+	</a>
 </div>
