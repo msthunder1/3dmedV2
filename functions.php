@@ -232,6 +232,9 @@ function register_services( Container $container ) {
 				$c->get( 'access_service' ),
 				array(
 					'my-account' => array( 'administrator', '3dmed_stranka' ),
+				),
+				array(
+					'registration',
 				)
 			);
 		}

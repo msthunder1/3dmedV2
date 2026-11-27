@@ -10,7 +10,7 @@ namespace ThreeDMed\Shortcodes;
 abstract class AbstractShortcode {
 
 	/**
-	 * Shortcode tag (e.g., 'registration_form')
+	 * Shortcode tag (e.g., 'threedmed_registration', 'threedmed_login')
 	 *
 	 * @var string
 	 */

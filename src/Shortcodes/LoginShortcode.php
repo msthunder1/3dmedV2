@@ -14,7 +14,7 @@ class LoginShortcode extends AbstractShortcode {
 	 *
 	 * @var string
 	 */
-	protected $tag = 'login_form';
+	protected $tag = 'threedmed_login';
 
 	/**
 	 * Render the login form

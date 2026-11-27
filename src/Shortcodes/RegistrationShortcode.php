@@ -14,7 +14,7 @@ class RegistrationShortcode extends AbstractShortcode {
 	 *
 	 * @var string
 	 */
-	protected $tag = 'registration_form';
+	protected $tag = 'threedmed_registration';
 
 	/**
 	 * Render the registration form

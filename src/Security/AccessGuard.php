@@ -25,14 +25,21 @@ class AccessGuard {
 	private $rules;
 
 	/**
+	 * @var array Slugs of pages that logged-in users should not see
+	 */
+	private $guest_only_pages;
+
+	/**
 	 * Constructor
 	 *
 	 * @param AccessService $access_service Answers who the user is
 	 * @param array $rules Page slug => allowed roles
+	 * @param array $guest_only_pages Slugs of pages that logged-in users should not see
 	 */
-	public function __construct( AccessService $access_service, array $rules ) {
-		$this->access_service = $access_service;
-		$this->rules          = $rules;
+	public function __construct( AccessService $access_service, array $rules, array $guest_only_pages = array() ) {
+		$this->access_service   = $access_service;
+		$this->rules            = $rules;
+		$this->guest_only_pages = $guest_only_pages;
 	}
 
 	/**
@@ -57,6 +64,11 @@ class AccessGuard {
 		}
 
 		$slug = $page->post_name;
+
+		if ( in_array( $slug, $this->guest_only_pages, true ) && $this->access_service->is_logged_in() ) {
+			\wp_safe_redirect( \home_url() );
+			exit;
+		}
 
 		if ( ! isset( $this->rules[ $slug ] ) ) {
 			return;

@@ -17,7 +17,7 @@
 	<form class="login__form" id="login-form" novalidate>
 
 		<?php \wp_nonce_field( 'threedmed_login', 'login_nonce' ); ?>
-		[]
+
 		<div class="form-field">
 			<label for="login_email">
 				<?php \esc_html_e( 'Email', 'threedmed' ); ?> <span class="required">*</span>
