@@ -41,6 +41,7 @@ class AccessGuard {
 	public function init() {
 		\add_action( 'template_redirect', array( $this, 'check_access' ) );
 		\add_action( 'admin_init', array( $this, 'block_admin_area' ) );
+		\add_filter( 'logout_redirect', array( $this, 'redirect_after_logout' ) );
 	}
 
 	/**
@@ -89,5 +90,14 @@ class AccessGuard {
 
 		\wp_safe_redirect( \home_url() );
 		exit;
+	}
+
+	/**
+	 * Redirect users after logout to the home page.
+	 *
+	 * @return string The URL to redirect to after logout.
+	 */
+	public function redirect_after_logout() {
+		return \home_url();
 	}
 }
