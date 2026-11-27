@@ -9,12 +9,10 @@ namespace ThreeDMed\Ajax;
 
 use ThreeDMed\Services\ProfileService;
 
+/**
+ *  Handles the AJAX request that updates a customer profile information
+ */
 class ProfileUpdateHandler extends AbstractAjaxHandler {
-	// Same pattern as reguistratinoHandler but
-	// $action = 'threedmed_profile_update';
-	// $nonce_action = 'threedmed_profile_update';
-	// Constructr takes Profile Service
-	// in handle: verify nonce, verify user is logged in, get current user ID, sanitize $_POST fields (all the profile fields), call $this->profile_service->update_profile( $user_id, $data ), send success or error response
 
 	/**
 	 * @var ProfileService
@@ -53,7 +51,7 @@ class ProfileUpdateHandler extends AbstractAjaxHandler {
 		if ( ! $this->verify_nonce() ) {
 			$this->send_error(
 				array(
-					'errors' => \__( 'Security check failed.', 'threedmed' ),
+					'errors' => array( 'general' => \__( 'Security check failed.', 'threedmed' ) ),
 				)
 			);
 		}
@@ -61,7 +59,7 @@ class ProfileUpdateHandler extends AbstractAjaxHandler {
 		if ( ! \is_user_logged_in() ) {
 			$this->send_error(
 				array(
-					'errors' => \__( 'You must be logged in to update your profile.', 'threedmed' ),
+					'errors' => array( 'general' => \__( 'You must be logged in to update your profile.', 'threedmed' ) ),
 				)
 			);
 		}
