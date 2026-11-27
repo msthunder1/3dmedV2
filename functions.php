@@ -215,6 +215,29 @@ function register_services( Container $container ) {
 	);
 
 	$container->get( 'profile_update_handler' )->init();
+
+	// Services - Access
+	$container->register(
+		'access_service',
+		function () {
+			return new Services\AccessService();
+		}
+	);
+
+	// Security - Access guard
+	$container->register(
+		'access_guard',
+		function ( $c ) {
+			return new Security\AccessGuard(
+				$c->get( 'access_service' ),
+				array(
+					'my-account' => array( 'administrator', '3dmed_stranka' ),
+				)
+			);
+		}
+	);
+
+	$container->get( 'access_guard' )->init();
 }
 
 /**
